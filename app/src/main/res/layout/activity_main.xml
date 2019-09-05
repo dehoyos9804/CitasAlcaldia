@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/padding_general"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
+
+    <!--logo coorporativo-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logoalcaldia"/>
+
+    <!--usuario-->
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/text_input_usuario"
+        android:drawableLeft="@drawable/ic_person_black"
+        android:inputType="text"/>
+
+    <!--contraseña del usuario-->
+    <EditText
+        android:id="@+id/txtClave"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/text_input_clave"
+        android:drawableLeft="@drawable/ic_lock_black"
+        android:inputType="textPassword"/>
+
+    <!--Button iniciar sesion-->
+    <Button
+        android:id="@+id/btnIniciarSesion"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="@string/text_boton_iniciarsesion" />
+
+    <TextView
+        android:id="@+id/txtOlvidasteContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/text_olvidaste_contraseña"
+        android:textSize="14sp"
+        android:textColor="@color/colorTextA"
+        android:layout_marginBottom="35dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="14sp"
+            android:text="@string/text_sin_cuenta"/>
+
+        <TextView
+            android:id="@+id/txtCrearCuenta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/text_registrate"
+            android:textSize="14sp"
+            android:textColor="@color/colorTextA"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

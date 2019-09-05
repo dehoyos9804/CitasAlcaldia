@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.com.learn.code">
+
+    <!-- permiso de RED -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!--Actividad principal login-->
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <!--Actividad initial para el usuario-->
+        <activity
+            android:name=".ui.InitialUsuarioActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.NoToolbar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.InitialUsuarioActivity" />
+        </activity>
+
+        <!--Actividad para el registro de usuarios-->
+        <activity
+            android:name=".ui.RegistrarUsuarioActivity"
+            android:label="@string/app_name_register"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.RegistrarUsuarioActivity" />
+        </activity>
+
+        <!--actividad para la lista de dependencia-->
+        <activity
+            android:name=".ui.ListaDependenciaActivity"
+            android:label="@string/app_name_dependencia"
+            android:theme="@style/Theme.NoToolbar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ListaDependenciaActivity" />
+        </activity>
+    </application>
+
+</manifest>

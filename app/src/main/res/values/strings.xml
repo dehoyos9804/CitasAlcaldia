@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Citas</string>
+    <string name="app_name_main">Ingresar Al Sistema</string>
+    <string name="app_name_register">Registra Nuevo Usuario</string>
+    <string name="app_name_dependencia">Gestion de Citas</string>
+    
+    <!--String para login-->
+    <string name="text_input_usuario">Usuario</string>
+    <string name="text_input_clave">Contraseña</string>
+    <string name="text_boton_iniciarsesion">Ingresar</string>
+    <string name="text_olvidaste_contraseña">¿Olvidaste Tú Contraseña?</string>
+    <string name="text_sin_cuenta">¿No Tienes Cuenta?</string>
+    <string name="text_registrate">REGISTRARSE</string>
+
+    <!--String para initial usuario-->
+    <string name="text_ms">DEPARTAMENTO DE SUCRE MUNICIPIO DE SAMPUES</string>
+    <string name="text_alcaldia">ALCALDIA</string>
+    <string name="text_agendar">Agendar citas</string>
+    <string name="text_listacita">Citas Programadas</string>
+    <string name="text_anular">Anular Citas</string>
+    <string name="text_perfil">Perfil</string>
+    <string name="text_acercade">Acerca de</string>
+    <string name="text_cerrar_sesion">Cerrar Sesion</string>
+</resources>

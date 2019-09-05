@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context=".ui.RegistrarUsuarioActivity">
+
+    <!--Logo -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:src="@drawable/logoalcaldia"
+        android:layout_marginBottom="15dp"/>
+
+    <!--identificacion-->
+    <EditText
+        android:id="@+id/txtIdentificacion"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:hint="Número de Identificación"
+        android:drawableLeft="@drawable/ic_usuario_black"/>
+
+    <!--Nombres-->
+    <EditText
+        android:id="@+id/txtNombres"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nombres"
+        android:inputType="textPersonName"
+        android:drawableLeft="@drawable/ic_nombres_black"/>
+
+    <!--Apellidos-->
+    <EditText
+        android:id="@+id/txtApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Apellidos"
+        android:inputType="textPersonName"
+        android:drawableLeft="@drawable/ic_nombres_black"/>
+
+    <!--Telefonos-->
+    <EditText
+        android:id="@+id/txtTelefonos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Telefono"
+        android:inputType="text"
+        android:drawableLeft="@drawable/ic_phone_black"/>
+
+    <!--Direccion-->
+    <EditText
+        android:id="@+id/txtDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Dirección"
+        android:drawableLeft="@drawable/ic_direccion_black"/>
+
+    <!--Correo-->
+    <EditText
+        android:id="@+id/txtCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Correo Electronico"
+        android:inputType="textAutoComplete"
+        android:drawableLeft="@drawable/ic_mail_black"/>
+
+    <!--contraseña-->
+    <EditText
+        android:id="@+id/txtClave"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_seguridad_black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkTerminos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acepto los "/>
+
+        <TextView
+            android:id="@+id/txtTerminosCondiciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terminos y Condiciones"
+            android:textColor="@color/colorTextA"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|center_vertical">
+
+        <!--boton cancelar-->
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="CANCELAR"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"/>
+
+        <!--boton guardar-->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="GUARDAR"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</LinearLayout>

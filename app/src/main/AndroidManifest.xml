@@ -55,6 +55,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.ListaDependenciaActivity" />
         </activity>
+
+        <!--Actividad que muestra para agendar citas-->
+        <activity
+            android:name=".ui.AgendarCitaActivity"
+            android:label="@string/app_name_add"
+            android:theme="@style/Theme.NoToolbar"
+            android:parentActivityName=".ui.AgendarCitaActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.AgendarCitaActivity"/>
+        </activity>
     </application>
 
 </manifest>

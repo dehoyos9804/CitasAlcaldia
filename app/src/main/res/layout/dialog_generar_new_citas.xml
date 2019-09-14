@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/imgErrorRed"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/minilogo28"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/textDatosCitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DATOS DE LA CITA"
+        android:layout_below="@id/imgErrorRed"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:fontFamily="sans-serif-black"
+        android:textSize="20sp"
+        android:textColor="#ff000000"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/layoutInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/textDatosCitas">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Departamento:"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="monospace"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tema:"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="monospace"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha:"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="monospace"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Horario:"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="monospace"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notificame:"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="monospace"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:id="@+id/txtDepartamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Despacho alcalde"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="serif"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/txtTema"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consulta General"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="serif"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/txtFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2019-09-11"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="serif"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/txtHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="08:00:00 - 08:30:00"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="serif"
+                android:layout_marginBottom="20dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerNotificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="monospace"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/layoutInformation"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/btn_flat_red_selector"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_flat_red_selector"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>

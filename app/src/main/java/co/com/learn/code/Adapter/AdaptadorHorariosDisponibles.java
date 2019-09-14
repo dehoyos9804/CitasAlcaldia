@@ -2,40 +2,30 @@ package co.com.learn.code.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 
 import java.util.List;
 
 import co.com.learn.code.Models.Dependencias;
+import co.com.learn.code.Models.HorariosDisponibles;
 import co.com.learn.code.R;
+import co.com.learn.code.fragment.DialogDatosCitas;
 import co.com.learn.code.ui.AgendarCitaActivity;
-import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdaptadorListaDependencia extends RecyclerView.Adapter<AdaptadorListaDependencia.ExpenseViewHolder> implements ItemClickListener{
+public class AdaptadorHorariosDisponibles extends RecyclerView.Adapter<AdaptadorHorariosDisponibles.ExpenseViewHolder> implements ItemClickListener{
 
     //Lista de objetos {@link Consultas} que representan la fuente de datos de inflado
-    private List<Dependencias> items;
+    private List<HorariosDisponibles> items;
 
     //contexto donde actuá el Recicle View
     private Context context;
 
     //constructor de la clase Recicle View
-    public AdaptadorListaDependencia(List<Dependencias> items, Context context) {
+    public AdaptadorHorariosDisponibles(List<HorariosDisponibles> items, Context context) {
         this.items = items;
         this.context = context;
     }
@@ -50,31 +40,35 @@ public class AdaptadorListaDependencia extends RecyclerView.Adapter<AdaptadorLis
     }
 
     @Override
-    public AdaptadorListaDependencia.ExpenseViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View cardView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_section_dependencia, viewGroup ,false);
-        return new AdaptadorListaDependencia.ExpenseViewHolder(cardView,this);
+    public AdaptadorHorariosDisponibles.ExpenseViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View cardView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_section_horas_diponibles, viewGroup ,false);
+        return new AdaptadorHorariosDisponibles.ExpenseViewHolder(cardView,this);
     }
 
     @Override
-    public void onBindViewHolder(final AdaptadorListaDependencia.ExpenseViewHolder viewHolder, int i) {
-        viewHolder.txtNombreDependencia.setText((items.get(i).getNombre()));
+    public void onBindViewHolder(final AdaptadorHorariosDisponibles.ExpenseViewHolder viewHolder, int i) {
+        viewHolder.txtHoraInicia.setText((items.get(i).getHorai()));
+        viewHolder.txtHoraFinal.setText((items.get(i).getHoraf()));
     }
 
 
     @Override
     public void onItemClick(View view, int position) {
-        AgendarCitaActivity.launch((Activity) context, items.get(position).getIddependencia(), items.get(position).getNombre());
+        DialogDatosCitas.showDialogCitas((Activity) context, "departamento 1", "consulta general", "hafh", "jajfa", "xahfa");
+        //AgendarCitaActivity.launch((Activity) context, items.get(position).getIddependencia(), items.get(position).getNombre());
     }
 
     public static class ExpenseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         //campos respectivos del items
-        public TextView txtNombreDependencia;
+        public TextView txtHoraInicia;
+        public TextView txtHoraFinal;
         public ItemClickListener listener;
 
         public ExpenseViewHolder(View view, ItemClickListener listener){
             super(view);
 
-            txtNombreDependencia = (TextView) view.findViewById(R.id.txtNombreDependencia);
+            txtHoraInicia = (TextView) view.findViewById(R.id.txtHoraInicial);
+            txtHoraFinal = (TextView) view.findViewById(R.id.txtHoraFinal);
             this.listener = listener;
 
             view.setOnClickListener(this);
@@ -86,3 +80,4 @@ public class AdaptadorListaDependencia extends RecyclerView.Adapter<AdaptadorLis
         }
     }
 }
+

@@ -3,6 +3,7 @@
     <string name="app_name_main">Ingresar Al Sistema</string>
     <string name="app_name_register">Registra Nuevo Usuario</string>
     <string name="app_name_dependencia">Gestion de Citas</string>
+    <string name="app_name_add">Agendar citas</string>
     
     <!--String para login-->
     <string name="text_input_usuario">Usuario</string>
@@ -21,4 +22,5 @@
     <string name="text_perfil">Perfil</string>
     <string name="text_acercade">Acerca de</string>
     <string name="text_cerrar_sesion">Cerrar Sesion</string>
+
 </resources>

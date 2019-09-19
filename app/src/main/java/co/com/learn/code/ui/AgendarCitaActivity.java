@@ -63,6 +63,8 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
     private TextView txtFecha;
     private String codigo_dependencia;
     private String nombre_dependencia;
+    private String nombre_tema;
+    private int codigo_tema;
     private int duracion;
     private String codigo_funcionario;
     private Spinner spinnerTema;
@@ -138,10 +140,6 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
         spinnerTema = (Spinner) findViewById(R.id.spinnerTema);
         llenarSpinnerTema();
 
-        //fab = (FloatingActionButton) findViewById(R.id.fab);
-        //Object item = spinnerTema.getSelectedItem();
-        //int idseleccionado = ((Temas) item).getIdtema();
-
         recyclerView = (RecyclerView) findViewById(R.id.reciclador_add);
         recyclerView.setHasFixedSize(true);
 
@@ -154,6 +152,8 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
+                codigo_tema = ((Temas) item).getIdtema();
+                nombre_tema = ((Temas) item).getTema();
                 duracion = ((Temas) item).getDuracion();
             }
 
@@ -341,8 +341,10 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
                         JSONArray mensaje = response.getJSONArray("tblusuarios");
                         // Parsear con Gson
                         HorariosDisponibles[] horarios = gson.fromJson(mensaje.toString(), HorariosDisponibles[].class);
+                        int coddependencia = Integer.parseInt(codigo_dependencia);
                         // Inicializar adaptador
-                        adapter = new AdaptadorHorariosDisponibles(Arrays.asList(horarios), this);
+                        adapter = new AdaptadorHorariosDisponibles(Arrays.asList(horarios), this, (txtFecha.getText().toString()),
+                                1, coddependencia, codigo_tema, nombre_dependencia, nombre_tema);
                         // Setear adaptador a la lista
                         recyclerView.setAdapter(adapter);
                         loading.dismiss();
@@ -354,7 +356,12 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
                 case "2":
                     String mensaje2 = response.getString("mensaje");
                     loading.dismiss();
-                    Utilidades.showToast(this, mensaje2);
+                    showSnackBar(mensaje2);
+                    break;
+                case "3":
+                    String mensaje3 = response.getString("mensaje");
+                    loading.dismiss();
+                    showSnackBar(mensaje3);
                     break;
             }
         } catch (JSONException je) {
@@ -362,6 +369,8 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
         }
     }
 
+    /**
+     * Método que obtiene el codigo del funcionario mediante el codigo de la dependencia**/
     private void getCodigoFuncionario(){
 
         //Añadir parametros a la URL de webservice
@@ -404,8 +413,8 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
                         JSONObject datos = response.getJSONObject("tbldependencias");
                         //Parsear objeto
                         Funcionario_Id is = gson.fromJson(datos.toString(),Funcionario_Id.class);
-                        Log.i("TAG","tag-->"+is.getIdfuncionario());
-                        codigo_funcionario = is.getIdfuncionario();
+                        Log.i("TAG","tag-->"+is.getNumerocedula());
+                        codigo_funcionario = is.getNumerocedula();
 
                     }catch (JSONException e){
                         Log.i(TAG,"Error al llenar Adaptador " +e.getLocalizedMessage());

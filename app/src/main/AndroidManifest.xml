@@ -67,6 +67,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AgendarCitaActivity"/>
         </activity>
+
+        <!--Actividad que muestra la lista de las citas del usuario-->
+        <activity
+            android:name=".ui.ListaCitasActivity"
+            android:label="@string/app_name_lista_cita"
+            android:theme="@style/Theme.NoToolbar"
+            android:parentActivityName=".ui.ListaCitasActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ListaCitasActivity"/>
+        </activity>
+
+        <!--Actividad que muestra el perfil de usuario-->
+        <activity
+            android:name=".ui.PerfilActivity"
+            android:label="@string/app_name_lista_cita"
+            android:theme="@style/Theme.NoToolbar"
+            android:parentActivityName=".ui.PerfilActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.PerfilActivity"/>
+        </activity>
     </application>
 
 </manifest>

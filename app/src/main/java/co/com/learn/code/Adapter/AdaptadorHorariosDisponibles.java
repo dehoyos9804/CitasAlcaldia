@@ -18,6 +18,14 @@ import co.com.learn.code.ui.AgendarCitaActivity;
 
 public class AdaptadorHorariosDisponibles extends RecyclerView.Adapter<AdaptadorHorariosDisponibles.ExpenseViewHolder> implements ItemClickListener{
 
+    //datos que van a poblar el dialog cuando realizamos el evento onclick del adaptador
+    private String fecha;
+    private int codigousuario;
+    private int codigodependencia;
+    private int codigotema;
+    private String nombredependencia;
+    private String nombretema;
+
     //Lista de objetos {@link Consultas} que representan la fuente de datos de inflado
     private List<HorariosDisponibles> items;
 
@@ -25,9 +33,16 @@ public class AdaptadorHorariosDisponibles extends RecyclerView.Adapter<Adaptador
     private Context context;
 
     //constructor de la clase Recicle View
-    public AdaptadorHorariosDisponibles(List<HorariosDisponibles> items, Context context) {
+    public AdaptadorHorariosDisponibles(List<HorariosDisponibles> items, Context context, String fecha, int codigousuario,
+                                        int codigodependencia, int codigotema, String nombredependencia, String nombretema) {
         this.items = items;
         this.context = context;
+        this.fecha = fecha;
+        this.codigousuario = codigousuario;
+        this.codigodependencia = codigodependencia;
+        this.codigotema = codigotema;
+        this.nombredependencia = nombredependencia;
+        this.nombretema = nombretema;
     }
 
     @Override
@@ -54,7 +69,7 @@ public class AdaptadorHorariosDisponibles extends RecyclerView.Adapter<Adaptador
 
     @Override
     public void onItemClick(View view, int position) {
-        DialogDatosCitas.showDialogCitas((Activity) context, "departamento 1", "consulta general", "hafh", "jajfa", "xahfa");
+        DialogDatosCitas.showDialogCitas((Activity) context, fecha, items.get(position).getHorai(), items.get(position).getHoraf(), codigousuario, codigodependencia, codigotema, nombredependencia, nombretema);
         //AgendarCitaActivity.launch((Activity) context, items.get(position).getIddependencia(), items.get(position).getNombre());
     }
 

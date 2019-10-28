@@ -14,7 +14,7 @@ import java.util.List;
 import co.com.learn.code.Models.Dependencias;
 import co.com.learn.code.Models.ListaCitas;
 import co.com.learn.code.R;
-import co.com.learn.code.ui.AgendarCitaActivity;
+import co.com.learn.code.ui.DetalleCitaActivity;
 
 public class AdaptadorListaCitas extends RecyclerView.Adapter<AdaptadorListaCitas.ExpenseViewHolder> implements ItemClickListener{
 
@@ -58,7 +58,7 @@ public class AdaptadorListaCitas extends RecyclerView.Adapter<AdaptadorListaCita
 
     @Override
     public void onItemClick(View view, int position) {
-        //AgendarCitaActivity.launch((Activity) context, items.get(position).getIddependencia(), items.get(position).getNombre());
+        DetalleCitaActivity.launch((Activity) context, items.get(position).getIdcita());
     }
 
     public static class ExpenseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

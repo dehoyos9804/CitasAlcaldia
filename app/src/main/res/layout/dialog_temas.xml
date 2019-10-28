@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/imgErrorRed"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/minilogo28"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/textDatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuevo Tema"
+        android:layout_below="@id/imgErrorRed"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="15dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:fontFamily="sans-serif-black"
+        android:textSize="20sp"
+        android:textColor="#ff000000"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/layoutInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@id/textDatos">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/txtTema"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Agregue un nuevo Tema"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-condensed-light"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elije el tiempo duración del tema"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spinner_duracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="sans-serif-condensed-light"
+            android:layout_marginBottom="25dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/layoutInformation"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/btn_flat_red_selector"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_flat_red_selector"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>

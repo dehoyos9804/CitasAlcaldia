@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_relative"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:background="@drawable/ic_liner_layer"
+    android:paddingBottom="8dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_reloj_light"
+        android:layout_centerVertical="true"/>
+
+    <!--hora inicial-->
+    <TextView
+        android:id="@+id/txtHoraInicial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_centerVertical="true"
+        android:text="08:00:00"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:fontFamily="serif-monospace"/>
+
+    <TextView android:id="@+id/text_separado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtHoraInicial"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="90dp"
+        android:text=" - "
+        android:textAppearance="?android:textAppearanceMedium"
+        android:fontFamily="serif-monospace"/>
+
+    <TextView
+        android:id="@+id/txtHoraFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/text_separado"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="35dp"
+        android:text="08:30:00"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:fontFamily="serif-monospace"/>
+</RelativeLayout>

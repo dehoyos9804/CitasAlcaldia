@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:background="@drawable/ic_liner_layer"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_imagen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person_black"
+        app:border_color="@android:color/black"
+        app:border_width="1dp" />
+
+    <!--Nombre de la enfermedad-->
+    <TextView
+        android:id="@+id/txtUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/circle_imagen"
+        android:layout_marginLeft="80dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:text="Coraima Romero Peñate"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Descartar Cambios -->
+    <item
+        android:id="@+id/action_discard"
+        android:orderInCategory="1"
+        android:title="Aplazar Cita"
+        android:tooltipText="Aplazar Cita"
+        android:icon="@drawable/ic_editar_menu_dark"
+        app:showAsAction="collapseActionView|ifRoom"/>
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="2"
+        android:title="Cancelar Cita"
+        android:tooltipText="Cancelar"
+        android:icon="@drawable/ic_delete_menu_dark"
+        app:showAsAction="collapseActionView|always"/>
+
+</menu>

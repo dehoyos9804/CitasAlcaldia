@@ -5,16 +5,22 @@ public class IniciarSesion {
     private String nombres;
     private String apellidos;
     private String telefono;
+    private String direccion;
     private String correo;
+    private String coddependencia;
     private String tipousuario;
 
     //constructor
-    public IniciarSesion(String numerocedula, String nombres, String apellidos, String telefono, String correo, String tipousuario) {
+
+
+    public IniciarSesion(String numerocedula, String nombres, String apellidos, String telefono, String direccion, String correo, String coddependencia, String tipousuario) {
         this.numerocedula = numerocedula;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.telefono = telefono;
+        this.direccion = direccion;
         this.correo = correo;
+        this.coddependencia = coddependencia;
         this.tipousuario = tipousuario;
     }
 
@@ -51,12 +57,28 @@ public class IniciarSesion {
         this.telefono = telefono;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public String getCorreo() {
         return correo;
     }
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getCoddependencia() {
+        return coddependencia;
+    }
+
+    public void setCoddependencia(String coddependencia) {
+        this.coddependencia = coddependencia;
     }
 
     public String getTipousuario() {

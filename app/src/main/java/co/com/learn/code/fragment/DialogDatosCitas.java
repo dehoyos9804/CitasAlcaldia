@@ -3,10 +3,13 @@ package co.com.learn.code.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,23 +40,32 @@ public class DialogDatosCitas {
      **/
     public static void showDialogCitas(final Activity activity, final String fecha, final String horainicial, final String horafinal, final int codigousuario,
                                        final int coddependencia, final int codtema, String nombredependencia, String nombreTema){
+
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_generar_new_citas);
 
+        //array para llenar la notificacion
+        ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(activity,R.array.notificacion ,android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         TextView txtDepartamento = (TextView) dialog.findViewById(R.id.txtDepartamento);
         TextView txtTema = (TextView) dialog.findViewById(R.id.txtTema);
         TextView txtFecha = (TextView) dialog.findViewById(R.id.txtFecha);
         TextView txtHora = (TextView) dialog.findViewById(R.id.txtHora);
-        Spinner spinnerNotificacion = (Spinner) dialog.findViewById(R.id.spinnerNotificacion);
+        final Spinner spinnerNotificacion = (Spinner) dialog.findViewById(R.id.spinnerNotificacion);
         Button btnCancelar = (Button) dialog.findViewById(R.id.btnCancelar);
         Button btnEnviar = (Button) dialog.findViewById(R.id.btnEnviar);
 
+
+        //lleno el spinner
+        spinnerNotificacion.setAdapter(arrayAdapter);
         txtDepartamento.setText(nombredependencia);
         txtTema.setText(nombreTema);
         txtFecha.setText(fecha);
         txtHora.setText((horainicial + " - " + horafinal));
+
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,112 +77,135 @@ public class DialogDatosCitas {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mostrar el diálogo de progreso
-                final ProgressDialog progressDialog = ProgressDialog.show(activity,"guardando...","Espere por favor...",false,false);
+                if(spinnerNotificacion.getSelectedItemPosition() != 0){
+                    int tiempoNotificacion = 0;//obtiene el tiempo de notificacion
 
-                String codusuario = String.valueOf(codigousuario);
-                String codigodependencia = String.valueOf(coddependencia);
-                String codigotema = String.valueOf(codtema);
+                    //valido las la seleccion del spinner
+                    switch (spinnerNotificacion.getSelectedItemPosition()){
+                        case 0:
+                            tiempoNotificacion = 0;
+                            break;
+                        case 1:
+                            tiempoNotificacion = 30;
+                            break;
+                        case 2:
+                            tiempoNotificacion = 60;
+                            break;
+                        case 3:
+                            tiempoNotificacion = (24*60);
+                            break;
+                    }
+                    //mostrar el diálogo de progreso
+                    final ProgressDialog progressDialog = ProgressDialog.show(activity,"guardando...","Espere por favor...",false,false);
 
-                LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();// Mapeo previo
-                map.put("fecha",fecha);
-                map.put("horainicial", horainicial);
-                map.put("horafinal", horafinal);
-                map.put("codigousuario", codusuario);
-                map.put("notificacion", "30");
-                map.put("coddependencia", codigodependencia);
-                map.put("codtema", codigotema);
+                    String codusuario = String.valueOf(codigousuario);
+                    String codigodependencia = String.valueOf(coddependencia);
+                    String codigotema = String.valueOf(codtema);
 
-                // Crear nuevo objeto Json basado en el mapa
-                JSONObject jobject = new JSONObject(map);
-                // Depurando objeto Json...
-                //Log.i(TAG, "map.." + map.toString());
-                //Log.d(TAG, "json productor..."+jobject);
+                    LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();// Mapeo previo
+                    map.put("fecha",fecha);
+                    map.put("horainicial", horainicial);
+                    map.put("horafinal", horafinal);
+                    map.put("codigousuario", codusuario);
+                    map.put("notificacion", String.valueOf(tiempoNotificacion));
+                    map.put("coddependencia", codigodependencia);
+                    map.put("codtema", codigotema);
 
-                // Actualizar datos en el servidor
-                VolleySingleton.getInstance(activity).addToRequestQueue(
-                        new JsonObjectRequest(
-                                Request.Method.POST,
-                                Constantes.INSERTAR_CITA,
-                                jobject,
-                                new Response.Listener<JSONObject>() {
-                                    @Override
-                                    public void onResponse(JSONObject response) {
+                    // Crear nuevo objeto Json basado en el mapa
+                    JSONObject jobject = new JSONObject(map);
+                    // Depurando objeto Json...
+                    //Log.i(TAG, "map.." + map.toString());
+                    //Log.d(TAG, "json productor..."+jobject);
 
-                                        try {
-                                            // Obtener estado
-                                            String estado = response.getString("estado");
-                                            // Obtener mensaje
-                                            String mensaje = response.getString("mensaje");
+                    // Actualizar datos en el servidor
+                    VolleySingleton.getInstance(activity).addToRequestQueue(
+                            new JsonObjectRequest(
+                                    Request.Method.POST,
+                                    Constantes.INSERTAR_CITA,
+                                    jobject,
+                                    new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
 
-                                            switch (estado) {
-                                                case "1":
-                                                    //descartar el diálogo de progreso
-                                                    progressDialog.dismiss();
-                                                    // Mostrar mensaje
-                                                    Utilidades.showToast(activity, mensaje);
-                                                    // Enviar código de éxito
-                                                    //setResult(Activity.RESULT_OK);
-                                                    //limpiar();
-                                                    // Terminar actividad
-                                                    dialog.dismiss();//cierro el dialogo
-                                                    Intent intent = new Intent(activity, InitialUsuarioActivity.class);
-                                                    activity.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP));//finaliza las actividades en pila
-                                                    break;
+                                            try {
+                                                // Obtener estado
+                                                String estado = response.getString("estado");
+                                                // Obtener mensaje
+                                                String mensaje = response.getString("mensaje");
 
-                                                case "2":
-                                                    //descartar el diálogo de progreso
-                                                    progressDialog.dismiss();
-                                                    // Mostrar mensaje
-                                                    Utilidades.showToast(activity, mensaje);
-                                                    // Enviar código de falla
-                                                    //setResult(Activity.RESULT_CANCELED);
-                                                    //limpiar();
-                                                    break;
-                                                case "3":
-                                                    //descartar el diálogo de progreso
-                                                    progressDialog.dismiss();
-                                                    // Mostrar mensaje
-                                                    Utilidades.showToast(activity, mensaje);
-                                                    // Enviar código de falla
-                                                    //setResult(Activity.RESULT_CANCELED);
-                                                    //limpiar();
-                                                    break;
+                                                switch (estado) {
+                                                    case "1":
+                                                        //descartar el diálogo de progreso
+                                                        progressDialog.dismiss();
+                                                        // Mostrar mensaje
+                                                        Utilidades.showToast(activity, mensaje);
+                                                        // Enviar código de éxito
+                                                        //setResult(Activity.RESULT_OK);
+                                                        //limpiar();
+                                                        // Terminar actividad
+                                                        dialog.dismiss();//cierro el dialogo
+                                                        Intent intent = new Intent(activity, InitialUsuarioActivity.class);
+                                                        activity.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP));//finaliza las actividades en pila
+                                                        break;
+
+                                                    case "2":
+                                                        //descartar el diálogo de progreso
+                                                        progressDialog.dismiss();
+                                                        // Mostrar mensaje
+                                                        Utilidades.showToast(activity, mensaje);
+                                                        // Enviar código de falla
+                                                        //setResult(Activity.RESULT_CANCELED);
+                                                        //limpiar();
+                                                        break;
+                                                    case "3":
+                                                        //descartar el diálogo de progreso
+                                                        progressDialog.dismiss();
+                                                        // Mostrar mensaje
+                                                        Utilidades.showToast(activity, mensaje);
+                                                        // Enviar código de falla
+                                                        //setResult(Activity.RESULT_CANCELED);
+                                                        //limpiar();
+                                                        break;
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
                                             }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            //descartar el diálogo de progreso
+                                            progressDialog.dismiss();
+                                            //Log.e(TAG, "Error Volley: " + error.getMessage());
+                                            //Utilidades.showToast(RegistrarUsuarioActivity.this, "Error Volley: " + error.getMessage());
                                         }
                                     }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        //descartar el diálogo de progreso
-                                        progressDialog.dismiss();
-                                        //Log.e(TAG, "Error Volley: " + error.getMessage());
-                                        //Utilidades.showToast(RegistrarUsuarioActivity.this, "Error Volley: " + error.getMessage());
-                                    }
+
+                            ) {
+                                @Override
+                                public Map<String, String> getHeaders() {
+                                    Map<String, String> headers = new HashMap<String, String>();
+                                    headers.put("Content-Type", "application/json; charset=utf-8");
+                                    headers.put("Accept", "application/json");
+                                    return headers;
                                 }
 
-                        ) {
-                            @Override
-                            public Map<String, String> getHeaders() {
-                                Map<String, String> headers = new HashMap<String, String>();
-                                headers.put("Content-Type", "application/json; charset=utf-8");
-                                headers.put("Accept", "application/json");
-                                return headers;
+                                @Override
+                                public String getBodyContentType() {
+                                    return "application/json; charset=utf-8" + getParamsEncoding();
+                                }
                             }
-
-                            @Override
-                            public String getBodyContentType() {
-                                return "application/json; charset=utf-8" + getParamsEncoding();
-                            }
-                        }
-                );
+                    );
+                }else{
+                    Utilidades.showToast(activity, "Debe seleccionar Un tiempo de notificación");
+                }
 
             }
         });
 
+
         dialog.show();//abro el dialogo
+
     }
 }

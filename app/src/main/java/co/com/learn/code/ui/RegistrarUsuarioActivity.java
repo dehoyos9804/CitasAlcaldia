@@ -193,6 +193,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
         map.put("direccion", direcc);
         map.put("correo", email);
         map.put("clave", cla);
+        map.put("codfuncionario", null);
 
         // Crear nuevo objeto Json basado en el mapa
         JSONObject jobject = new JSONObject(map);

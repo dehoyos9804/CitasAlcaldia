@@ -91,6 +91,40 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.PerfilActivity"/>
         </activity>
+
+        <!--Actividad que muestra el detalle de la cita elegida-->
+        <activity
+            android:name=".ui.DetalleCitaActivity"
+            android:label="@string/app_name_lista_cita"
+            android:theme="@style/Theme.NoToolbar"
+            android:parentActivityName=".ui.DetalleCitaActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.DetalleCitaActivity"/>
+        </activity>
+
+        <!-- Actividad Inicial Productor-->
+        <activity
+            android:name=".ui.InitialFuncionarioActivity"
+            android:label="@string/app_name_initial_funcionario"
+            android:theme="@style/Theme.NoToolbar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.InitialFuncionarioActivity" />
+        </activity>
+
+        <!-- Actividad Registrar Usuario mediante el funcionario-->
+        <!--Actividad para el registro de usuarios-->
+        <activity
+            android:name=".ui.RegistrarUsuarioFuncionarioActivity"
+            android:label="@string/app_name_register"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.RegistrarUsuarioFuncionarioActivity" />
+        </activity>
+
     </application>
 
 </manifest>

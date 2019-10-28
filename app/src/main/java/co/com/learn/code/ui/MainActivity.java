@@ -49,9 +49,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //inicio las preferencias guardadas
         if(Preferences.getPreferenceBoolean(this, Constantes.PREFERENCIA_SESION_CLAVE)){
-            Intent intent = new Intent(this, InitialUsuarioActivity.class);
-            startActivity(intent);
-            finish();//cierro la actividad de iniciar sesion
+            switch (Preferences.getPreferenceString(this, Constantes.PREFERENCIA_ROL_USUARIO)){
+                case "USUARIO":
+                    Intent intent = new Intent(this, InitialUsuarioActivity.class);
+                    startActivity(intent);
+                    finish();//cierro la actividad de iniciar sesion
+                    break;
+                case "FUNCIONARIO":
+                    Intent funcionario = new Intent(this, InitialFuncionarioActivity.class);
+                    startActivity(funcionario);
+                    finish();//cierro la actividad de iniciar sesion
+                    break;
+            }
+
         }
 
         //cambiar el titulo del toolbar
@@ -176,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.i("TAG","tag-->"+is.getNumerocedula());
                         loading.dismiss();//finalizo el dialogo
                         //iniciamos la sesion
-                        AutenticacionValida(is.getNumerocedula(),is.getNombres(),is.getApellidos(),is.getTelefono(),is.getCorreo(),is.getTipousuario());
+                        AutenticacionValida(is);
 
                     }catch (JSONException e){
                         Log.i(TAG,"Error al llenar Adaptador " +e.getLocalizedMessage());
@@ -204,24 +214,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void AutenticacionValida(String numerocedula, String nombres, String apellidos, String telefono, String correo, String tipousuario){
-        switch (tipousuario){
+    private void AutenticacionValida(IniciarSesion i){
+        switch (i.getTipousuario()){
             case "USUARIO":
                 Intent usuario = new Intent(this, InitialUsuarioActivity.class);
 
-                Preferences.savePreferenceString(this, numerocedula, Constantes.PREFERENCIA_IDENTIFICACION_CLAVE);
-                Preferences.savePreferenceString(this, nombres, Constantes.PREFERENCIA_NOMBRES_CLAVE);
-                Preferences.savePreferenceString(this, apellidos, Constantes.PREFERENCIA_APELLIDOS_CLAVE);
-                Preferences.savePreferenceString(this, telefono, Constantes.PREFERENCIA_TELEFONOS_CLAVE);
-                Preferences.savePreferenceString(this, correo, Constantes.PREFERENCIA_CORREO_CLAVE);
-                Preferences.savePreferenceString(this, tipousuario, Constantes.PREFERENCIA_TIPO_USUARIO_CLAVE);
+                Preferences.savePreferenceString(this, "USUARIO", Constantes.PREFERENCIA_ROL_USUARIO);
+                Preferences.savePreferenceString(this, i.getNumerocedula(), Constantes.PREFERENCIA_IDENTIFICACION_CLAVE);
+                Preferences.savePreferenceString(this, i.getNombres(), Constantes.PREFERENCIA_NOMBRES_CLAVE);
+                Preferences.savePreferenceString(this, i.getApellidos(), Constantes.PREFERENCIA_APELLIDOS_CLAVE);
+                Preferences.savePreferenceString(this, i.getTelefono(), Constantes.PREFERENCIA_TELEFONOS_CLAVE);
+                Preferences.savePreferenceString(this, i.getDireccion(), Constantes.PREFERENCIA_DIRECCION_CLAVE);
+                Preferences.savePreferenceString(this, i.getCorreo(), Constantes.PREFERENCIA_CORREO_CLAVE);
+                Preferences.savePreferenceString(this, i.getCoddependencia(), Constantes.PREFERENCIA_COD_DEPENDENCIA);
+                Preferences.savePreferenceString(this, i.getTipousuario(), Constantes.PREFERENCIA_TIPO_USUARIO_CLAVE);
                 Preferences.savePreferenceBoolean(this, Constantes.ESTADO_PREFERENCIA_TRUE, Constantes.PREFERENCIA_SESION_CLAVE);
 
                 startActivity(usuario);
                 finish();//finalizar actividad
                 break;
             case "FUNCIONARIO":
-                Utilidades.showToast(this, "Actividad del funcionario");
+                Intent funcionario = new Intent(this, InitialFuncionarioActivity.class);
+
+                Preferences.savePreferenceString(this, "FUNCIONARIO", Constantes.PREFERENCIA_ROL_USUARIO);
+                Preferences.savePreferenceString(this, i.getNumerocedula(), Constantes.PREFERENCIA_IDENTIFICACION_CLAVE);
+                Preferences.savePreferenceString(this, i.getNombres(), Constantes.PREFERENCIA_NOMBRES_CLAVE);
+                Preferences.savePreferenceString(this, i.getApellidos(), Constantes.PREFERENCIA_APELLIDOS_CLAVE);
+                Preferences.savePreferenceString(this, i.getTelefono(), Constantes.PREFERENCIA_TELEFONOS_CLAVE);
+                Preferences.savePreferenceString(this, i.getDireccion(), Constantes.PREFERENCIA_DIRECCION_CLAVE);
+                Preferences.savePreferenceString(this, i.getCorreo(), Constantes.PREFERENCIA_CORREO_CLAVE);
+                Preferences.savePreferenceString(this, i.getCoddependencia(), Constantes.PREFERENCIA_COD_DEPENDENCIA);
+                Preferences.savePreferenceBoolean(this, Constantes.ESTADO_PREFERENCIA_TRUE, Constantes.PREFERENCIA_SESION_CLAVE);
+
+                startActivity(funcionario);
+                finish();//finalizar actividad
                 break;
         }
     }

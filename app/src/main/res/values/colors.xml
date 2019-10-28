@@ -8,4 +8,14 @@
     <color name="colorTransparente">#00000000</color>
     <color name="colorTransparenteRojo">#0AFD0303</color>
 
+    <color name="color_elegido">#0EAFEE</color>
+
+    <color name="color1">#FF9800</color>
+    <color name="color2">#5D4037</color>
+    <color name="color3">#E91E63</color>
+    <color name="color4">#9C27B0</color>
+    <color name="color5">#009688</color>
+
+    <color name="text_default_color">#626262</color>
+
 </resources>

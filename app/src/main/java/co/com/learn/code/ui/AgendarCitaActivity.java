@@ -49,6 +49,7 @@ import co.com.learn.code.Models.Temas;
 import co.com.learn.code.R;
 import co.com.learn.code.utils.Constantes;
 import co.com.learn.code.utils.DateDialog;
+import co.com.learn.code.utils.Preferences;
 import co.com.learn.code.utils.Utilidades;
 import co.com.learn.code.web.VolleySingleton;
 
@@ -198,7 +199,12 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
         String outDate = dateFormat.format(date);
         txtFecha.setText(outDate);
 
-        cargarDatosAdaptador((txtFecha.getText().toString()), duracion, codigo_funcionario);//cargo los horarios disponibles
+        //verifico que el spinner haya sido seleccionadp
+        if(spinnerTema.getSelectedItemPosition() != 0){
+            cargarDatosAdaptador((txtFecha.getText().toString()), duracion, codigo_funcionario);//cargo los horarios disponibles
+        }else{
+            showSnackBar("Debe seleccionar un tema");
+        }
     }
 
     @Override
@@ -267,14 +273,6 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
                             Log.i(TAG,"Datos Vacios"+listaTema);
                         }
 
-                        /*spinnerTema.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                if(position != 0 && id != 0){
-                                    Object item = parent.getItemAtPosition(position);
-                                }
-                            }
-                        });*/
 
                     } catch (JSONException e) {
                         Log.i(TAG, "Error al llenar La Lista " + e.getLocalizedMessage());
@@ -344,7 +342,7 @@ public class AgendarCitaActivity extends AppCompatActivity implements DatePicker
                         int coddependencia = Integer.parseInt(codigo_dependencia);
                         // Inicializar adaptador
                         adapter = new AdaptadorHorariosDisponibles(Arrays.asList(horarios), this, (txtFecha.getText().toString()),
-                                1, coddependencia, codigo_tema, nombre_dependencia, nombre_tema);
+                                Integer.parseInt(Preferences.getPreferenceString(this, Constantes.PREFERENCIA_IDENTIFICACION_CLAVE)), coddependencia, codigo_tema, nombre_dependencia, nombre_tema);
                         // Setear adaptador a la lista
                         recyclerView.setAdapter(adapter);
                         loading.dismiss();

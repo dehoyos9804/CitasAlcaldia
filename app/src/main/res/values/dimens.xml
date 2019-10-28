@@ -13,4 +13,12 @@
     <dimen name="activity_horizontal_margin">32dp</dimen>
     <dimen name="fab_margin">32dp</dimen>
     <dimen name="size_fab">55dp</dimen>
+
+    <dimen name="activity_horizontal_margin2">16dp</dimen>
+    <dimen name="activity_vertical_margin2">16dp</dimen>
+    <dimen name="header_left_padding">16dp</dimen>
+    <dimen name="header_height">180dp</dimen>
+    <dimen name="perfil_image_size">64dp</dimen>
+
+
 </resources>

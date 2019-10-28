@@ -67,11 +67,14 @@ public class InitialUsuarioActivity extends AppCompatActivity implements View.On
     private void cerrarSesion(){
         Intent cerrarSesion = new Intent(this, MainActivity.class);
 
+        Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_ROL_USUARIO);
         Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_IDENTIFICACION_CLAVE);
         Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_NOMBRES_CLAVE);
         Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_APELLIDOS_CLAVE);
         Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_TELEFONOS_CLAVE);
+        Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_DIRECCION_CLAVE);
         Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_CORREO_CLAVE);
+        Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_COD_DEPENDENCIA);
         Preferences.savePreferenceString(this, "", Constantes.PREFERENCIA_TIPO_USUARIO_CLAVE);
         Preferences.savePreferenceBoolean(this, Constantes.ESTADO_PREFERENCIA_FALSE, Constantes.PREFERENCIA_SESION_CLAVE);
 

@@ -208,14 +208,15 @@ public class ListaCitasActivity extends AppCompatActivity implements SearchView.
     }
 
     //Agrego mi menu
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_search_initial, menu);
         MenuItem searchItem = menu.findItem(R.id.men_action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(this);
-
         return true;
-    }*/
+    }
 
     /**
      * Proyecta una {@link Snackbar} con el string usado

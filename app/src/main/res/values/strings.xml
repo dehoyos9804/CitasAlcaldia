@@ -5,6 +5,7 @@
     <string name="app_name_dependencia">Gestion de Citas</string>
     <string name="app_name_add">Agendar citas</string>
     <string name="app_name_lista_cita">Citas Programadas</string>
+    <string name="app_name_initial_funcionario">Initial</string>
     
     <!--String para login-->
     <string name="text_input_usuario">Usuario</string>
@@ -25,5 +26,32 @@
     <string name="text_cerrar_sesion">Cerrar Sesion</string>
 
     <string name="hint_search">Search</string>
+
+    <string name="home_item">Consultar Citas</string>
+    <string name="horario_item">Registrar Horario</string>
+    <string name="usuario_item">Registrar Usuario</string>
+    <string name="tema_item">Agregar Tema</string>
+    <string name="perfil_item">Gestion Perfil</string>
+    <string name="cerrar_sesion_item">Cerrar Sesión</string>
+
+    <string name="empty_list">No hay datos</string>
+
+    <string name="bh_closed">Closed</string>
+    <string name="bh_open">Open</string>
+    <string name="bh_start_hours">De</string>
+    <string name="bh_end_hours">A</string>
+
+    <string name="bhv_monday">Lunes</string>
+    <string name="bhv_tuesday">Martes</string>
+    <string name="bhv_wednesday">Miercoles</string>
+    <string name="bhv_thursday">Jueves</string>
+    <string name="bhv_friday">Viernes</string>
+    <string name="bhv_saturday">Sabado</string>
+    <string name="bhv_sunday">Domingo</string>
+
+    <string name="bh_choose_business_hours">Please choose your business hours</string>
+    <string name="apply">Appliquer</string>
+    <string name="all_day">24h</string>
+    <string name="validation_exception_msg">Invalid business hours : You must specify at least one hour .</string>
 
 </resources>

@@ -1,624 +1,680 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinator_horario"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/coordinator_add_horario"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+
+    <!-- En caso de lista vacía -->
+    <TextView
+        android:id="@+id/data_empty_horario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="@string/empty_list"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <android.support.v7.widget.GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:layout_margin="12dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:padding="2dp"
+            app:columnCount="2"
+            app:rowCount="3">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_lunes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/colorAccent">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Lunes"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_1"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:text="LUNES"
+                        android:gravity="center"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_1"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_martes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/color6">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/lyt_hours_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MARTES"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_2"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 06:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_miercoles"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/color4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_1"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MIERCOLES"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_3"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 06:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_jueves"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/color1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="JUEVES"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_4"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 06:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_viernes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/color3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_1"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="VIERNES"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_5"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 06:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_sabado"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/color5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SABADO"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_6"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 06:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/liner_domingo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:foreground="?selectableItemBackground"
+                app:cardBackgroundColor="@color/color2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Martes"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DOMINGO"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:drawableTop="@drawable/ic_event_date"/>
 
-            <LinearLayout
-                android:id="@+id/lyt_hours_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/txtHorarioInicialManana_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 08:00:00 AM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
 
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_2"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
+                    <TextView
+                        android:id="@+id/txtHorarioFinalManana_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 12:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE0E2"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/txtHorarioInicialTarde_7"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DE 02:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"/>
 
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_2"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
+                    <TextView
+                        android:id="@+id/txtHorarioFinalTarde_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASTA 06:00:00 PM"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginBottom="20dp"/>
 
-            </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
+        </android.support.v7.widget.GridLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Miercoles"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+    </RelativeLayout>
 
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_horario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:tooltipText="Agregar Temas"
+        android:src="@drawable/fab_add"/>
 
-            <LinearLayout
-                android:id="@+id/lyt_hours_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_3"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_3"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Jueves"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lyt_hours_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_4"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_4"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Viernes"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lyt_hours_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_5"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_5"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Sábado"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lyt_hours_6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_6"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_6"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Domingo"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/switch_open_7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:gravity="center|end"
-                    android:padding="8dp"
-                    android:textColor="@color/text_default_color"
-                    android:textOff="@string/bh_closed"
-                    android:textOn="@string/bh_open"
-                    android:textSize="14sp"
-                    app:showText="false"
-                    app:switchPadding="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lyt_hours_7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="left"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/switch_open_1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_start_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_from_7"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/bh_end_hours"
-                    android:textSize="12sp" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spin_bh_to_7"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:entries="@array/busines_hours"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_apply"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:text="Agregar"
-                android:layout_gravity="center"
-                android:layout_width="120dp"
-                android:layout_height="60dp" />
-
-        </LinearLayout>
-    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

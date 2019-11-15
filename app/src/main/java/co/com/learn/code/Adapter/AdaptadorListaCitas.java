@@ -52,7 +52,24 @@ public class AdaptadorListaCitas extends RecyclerView.Adapter<AdaptadorListaCita
         viewHolder.txtTemaCita.setText(items.get(i).getTema());
         viewHolder.txtDependenciaCita.setText(items.get(i).getNombre());
         viewHolder.txtFuncionarioCita.setText((items.get(i).getNombres() + " " + items.get(i).getApellidos()));
-        viewHolder.txtEstado.setText(items.get(i).getEstado());
+
+        switch (items.get(i).getEstado()){
+            case "0"://No Atendida
+                viewHolder.linearColor.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+                viewHolder.txtEstado.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+                viewHolder.txtEstado.setText("No Atendida");
+                break;
+            case "1"://EN ESPERA
+                viewHolder.linearColor.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                viewHolder.txtEstado.setTextColor(context.getResources().getColor(R.color.colorAccent));
+                viewHolder.txtEstado.setText("En espera");
+                break;
+            case "2"://Atendida
+                viewHolder.linearColor.setBackgroundColor(context.getResources().getColor(R.color.color6));
+                viewHolder.txtEstado.setTextColor(context.getResources().getColor(R.color.color6));
+                viewHolder.txtEstado.setText("Atendida");
+                break;
+        }
     }
 
 

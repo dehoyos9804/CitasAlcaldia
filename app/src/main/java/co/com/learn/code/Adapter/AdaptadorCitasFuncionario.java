@@ -20,6 +20,9 @@ import java.util.UUID;
 import co.com.learn.code.Models.CitasFuncionario;
 import co.com.learn.code.Models.Usuarios;
 import co.com.learn.code.R;
+import co.com.learn.code.ui.AgendarCitaActivity;
+import co.com.learn.code.ui.DetalleCitaActivity;
+import co.com.learn.code.ui.GestionCitasActivity;
 import co.com.learn.code.utils.Utilidades;
 
 public class AdaptadorCitasFuncionario extends RecyclerView.Adapter<AdaptadorCitasFuncionario.ExpenseViewHolder> implements ItemClickListener{
@@ -88,7 +91,7 @@ public class AdaptadorCitasFuncionario extends RecyclerView.Adapter<AdaptadorCit
 
     @Override
     public void onItemClick(View view, int position) {
-
+        GestionCitasActivity.launch((Activity) context, items.get(position).getCodcita());
     }
 
     public static class ExpenseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

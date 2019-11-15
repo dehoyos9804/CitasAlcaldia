@@ -1,0 +1,1803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_horario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:layout_margin="12dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_monday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_lunes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_1"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_1"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_1"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana"
+                            android:layout_below="@id/spin_bh_from_manana_1"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_1"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_1"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_1"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde"
+                            android:layout_below="@id/spin_bh_from_tarde_1"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Martes-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_tuesday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_marte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_2"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana_2"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_2"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_2"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana_2"
+                            android:layout_below="@id/spin_bh_from_manana_2"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_2"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_2"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_2"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_2"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_2"
+                            android:layout_below="@id/spin_bh_from_tarde_2"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--fin martes-->
+
+            <!--Miercoles-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_wednesday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_miercole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_3"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana_3"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_3"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_3"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana_3"
+                            android:layout_below="@id/spin_bh_from_manana_3"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_3"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_3"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_3"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_3"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_3"
+                            android:layout_below="@id/spin_bh_from_tarde_3"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--fin miercoles-->
+
+            <!--jueves-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_thursday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_jueves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_4"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana_4"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_4"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_4"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana_4"
+                            android:layout_below="@id/spin_bh_from_manana_4"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_4"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_4"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_4"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_4"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_4"
+                            android:layout_below="@id/spin_bh_from_tarde_4"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--fin jueves-->
+            <!--viernes-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_friday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_viernes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_5"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana_5"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_5"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_5"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana_5"
+                            android:layout_below="@id/spin_bh_from_manana_5"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_5"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_5"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_5"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_5"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_5"
+                            android:layout_below="@id/spin_bh_from_tarde_5"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--fin viernes-->
+
+            <!--sabado-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_saturday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_sabado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_6"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana_6"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_6"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_6"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana_6"
+                            android:layout_below="@id/spin_bh_from_manana_6"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_6"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_6"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_6"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_6"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_6"
+                            android:layout_below="@id/spin_bh_from_tarde_6"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--fin sabado-->
+
+            <!--domingo-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="@string/bhv_sunday"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_open_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:gravity="center|end"
+                    android:padding="8dp"
+                    android:textColor="@color/text_default_color"
+                    android:textOff="@string/bh_closed"
+                    android:textOn="@string/bh_open"
+                    android:textSize="14sp"
+                    app:showText="false"
+                    app:switchPadding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_jornadas_domingo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Jornada de Trabajo"
+                    android:gravity="center"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Mañana"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_manana_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Tarde"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switch_jornada_tarde_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:gravity="center|end"
+                            android:padding="8dp"
+                            android:textColor="@color/text_default_color"
+                            android:textOff="@string/bh_closed"
+                            android:textOn="@string/bh_open"
+                            android:textSize="14sp"
+                            app:showText="false"
+                            app:switchPadding="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_manana_7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_manana_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_7"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_manana_7"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_manana_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_manana_7"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_manana_a_7"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_manana"
+                            android:spinnerMode="dropdown"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@id/text_de_manana_7"
+                            android:layout_below="@id/spin_bh_from_manana_7"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_hours_tarde_7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/text_de_tarde_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/bh_start_hours"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_7"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_7"/>
+
+
+                        <TextView
+                            android:id="@+id/text_a_tarde_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="A"
+                            android:layout_below="@id/spin_bh_from_tarde_7"
+                            android:layout_marginRight="10dp"
+                            android:textAppearance="?android:textAppearanceMedium"/>
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spin_bh_from_tarde_a_7"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/busines_hours_tarde"
+                            android:spinnerMode="dropdown"
+                            android:layout_toRightOf="@id/text_de_tarde_7"
+                            android:layout_below="@id/spin_bh_from_tarde_7"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--fin domingo-->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_apply"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="Agregar"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="25dp"/>
+        </LinearLayout>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>

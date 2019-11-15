@@ -194,20 +194,6 @@ public class AdaptadorTemas extends RecyclerView.Adapter<AdaptadorTemas.ExpenseV
 
             switch (estado) {
                 case "1":
-                    //descartar el diálogo de progreso
-                    //colocar el estado del switch
-                    /*boolean e = (items.get(position).getEstado().equalsIgnoreCase("Activo")) ? true : false;
-                    if(e){
-                        viewHolder.switch_estado.setChecked(e);
-                        viewHolder.switch_estado.setText(items.get(position).getEstado());
-                        viewHolder.switch_estado.setTextColor(context.getResources().getColor(R.color.colorAccent));
-                        viewHolder.linearColor.setBackground(context.getDrawable(R.color.colorAccent));
-                    }else{
-                        viewHolder.switch_estado.setChecked(e);
-                        viewHolder.switch_estado.setText(items.get(position).getEstado());
-                        viewHolder.switch_estado.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-                        viewHolder.linearColor.setBackground(context.getDrawable(R.color.colorPrimary));
-                    }*/
                     break;
 
                 case "2":

@@ -6,6 +6,8 @@
     <string name="app_name_add">Agendar citas</string>
     <string name="app_name_lista_cita">Citas Programadas</string>
     <string name="app_name_initial_funcionario">Initial</string>
+    <string name="app_name_horario">Registrar Horario</string>
+    <string name="app_name_gestion">Gestion De Citas</string>
     
     <!--String para login-->
     <string name="text_input_usuario">Usuario</string>

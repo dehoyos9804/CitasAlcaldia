@@ -189,6 +189,9 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
                     String mensaje2 = response.getString("mensaje");
                     //data_empty.setText("");
                     showSnackBar(mensaje2);
+                    adapter = new AdaptadorCitasFuncionario(null, getContext());;
+                    recyclerView.setAdapter(adapter);
+                    data_empty.setText("No hay citas programadas para esta fecha");
                     loading.dismiss();
                     break;
             }

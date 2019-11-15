@@ -1,71 +1,67 @@
 package co.com.learn.code.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import co.com.learn.code.Adapter.AdaptadorUsuarios;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import co.com.learn.code.Adapter.AdaptadorCitasFuncionario;
+import co.com.learn.code.Models.CitasFuncionario;
+import co.com.learn.code.Models.HorarioFuncionario;
+import co.com.learn.code.Models.SerializarHorario;
 import co.com.learn.code.R;
+import co.com.learn.code.ui.AgregarHorarioActivity;
+import co.com.learn.code.utils.Constantes;
+import co.com.learn.code.utils.Preferences;
+import co.com.learn.code.utils.Utilidades;
+import co.com.learn.code.web.VolleySingleton;
 
 public class HorarioFragment extends Fragment implements View.OnClickListener {
 
     //etiqueta para la depuracion
     private static final String TAG = UsuariosFragment.class.getSimpleName();
     private Gson gson = new Gson();
-    //adaptador del RecicleView
-    private AdaptadorUsuarios adapter;
-    //instancia global de RecicleView
-    private RecyclerView recyclerView;
-    //instancia global del administrador
-    private RecyclerView.LayoutManager lManager;
-    //instancia del progress dialog
-    private static ProgressDialog loading = null;
+    private TextView data_empty_horario;
+    private CardView[] liner_dias = new CardView[7];
+    private FloatingActionButton fab_horario;
+    private TextView[] txtHorarioInicialManana = new TextView[7];
+    private TextView[] txtHorarioFinalManana = new TextView[7];
+    private TextView[] txtHorarioInicialTarde = new TextView[7];
+    private TextView[] txtHorarioFinalTarde = new TextView[7];
+    private ProgressDialog loading = null;
 
     private View view;
-
-    private TextView data_empty;
-    private FloatingActionButton fab_usuario;
-
-    private LinearLayout lyt_hours_1;
-    private LinearLayout lyt_hours_2;
-    private LinearLayout lyt_hours_3;
-    private LinearLayout lyt_hours_4;
-    private LinearLayout lyt_hours_5;
-    private LinearLayout lyt_hours_6;
-    private LinearLayout lyt_hours_7;
-
-    private SwitchCompat switch_open_1;
-    private SwitchCompat switch_open_2;
-    private SwitchCompat switch_open_3;
-    private SwitchCompat switch_open_4;
-    private SwitchCompat switch_open_5;
-    private SwitchCompat switch_open_6;
-    private SwitchCompat switch_open_7;
-
-    private AppCompatSpinner spin_bh_from_1, spin_bh_to_1;
-    private AppCompatSpinner spin_bh_from_2, spin_bh_to_2;
-    private AppCompatSpinner spin_bh_from_3, spin_bh_to_3;
-    private AppCompatSpinner spin_bh_from_4, spin_bh_to_4;
-    private AppCompatSpinner spin_bh_from_5, spin_bh_to_5;
-    private AppCompatSpinner spin_bh_from_6, spin_bh_to_6;
-    private AppCompatSpinner spin_bh_from_7, spin_bh_to_7;
-
-    private AppCompatButton btn_apply;
+    private boolean isHorario = false;
 
     //costructor del fragmento
     public HorarioFragment() {
@@ -92,136 +88,157 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
     }
 
     private void init(){
-        lyt_hours_1 = (LinearLayout) view.findViewById(R.id.lyt_hours_1);
-        lyt_hours_2 = (LinearLayout) view.findViewById(R.id.lyt_hours_2);
-        lyt_hours_3 = (LinearLayout) view.findViewById(R.id.lyt_hours_3);
-        lyt_hours_4 = (LinearLayout) view.findViewById(R.id.lyt_hours_4);
-        lyt_hours_5 = (LinearLayout) view.findViewById(R.id.lyt_hours_5);
-        lyt_hours_6 = (LinearLayout) view.findViewById(R.id.lyt_hours_6);
-        lyt_hours_7 = (LinearLayout) view.findViewById(R.id.lyt_hours_7);
+        data_empty_horario = (TextView) view.findViewById(R.id.data_empty_horario);
 
-        switch_open_1 = (SwitchCompat) view.findViewById(R.id.switch_open_1);
-        switch_open_2 = (SwitchCompat) view.findViewById(R.id.switch_open_2);
-        switch_open_3 = (SwitchCompat) view.findViewById(R.id.switch_open_3);
-        switch_open_4 = (SwitchCompat) view.findViewById(R.id.switch_open_4);
-        switch_open_5 = (SwitchCompat) view.findViewById(R.id.switch_open_5);
-        switch_open_6 = (SwitchCompat) view.findViewById(R.id.switch_open_6);
-        switch_open_7 = (SwitchCompat) view.findViewById(R.id.switch_open_7);
+        liner_dias[0] = (CardView) view.findViewById(R.id.liner_lunes);
+        liner_dias[1] = (CardView) view.findViewById(R.id.liner_martes);
+        liner_dias[2] = (CardView) view.findViewById(R.id.liner_miercoles);
+        liner_dias[3] = (CardView) view.findViewById(R.id.liner_jueves);
+        liner_dias[4] = (CardView) view.findViewById(R.id.liner_viernes);
+        liner_dias[5] = (CardView) view.findViewById(R.id.liner_sabado);
+        liner_dias[6] = (CardView) view.findViewById(R.id.liner_domingo);
 
-        spin_bh_from_1 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_1);
-        spin_bh_from_2 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_2);
-        spin_bh_from_3 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_3);
-        spin_bh_from_4 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_4);
-        spin_bh_from_5 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_5);
-        spin_bh_from_6 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_6);
-        spin_bh_from_7 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_from_7);
+        fab_horario = (FloatingActionButton) view.findViewById(R.id.fab_horario);
 
-        spin_bh_to_1 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_1);
-        spin_bh_to_2 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_2);
-        spin_bh_to_3 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_3);
-        spin_bh_to_4 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_4);
-        spin_bh_to_5 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_5);
-        spin_bh_to_6 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_6);
-        spin_bh_to_7 = (AppCompatSpinner) view.findViewById(R.id.spin_bh_to_7);
+        txtHorarioInicialManana[0] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_1);
+        txtHorarioInicialManana[1] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_2);
+        txtHorarioInicialManana[2] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_3);
+        txtHorarioInicialManana[3] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_4);
+        txtHorarioInicialManana[4] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_5);
+        txtHorarioInicialManana[5] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_6);
+        txtHorarioInicialManana[6] = (TextView) view.findViewById(R.id.txtHorarioInicialManana_7);
 
-        btn_apply = (AppCompatButton) view.findViewById(R.id.btn_apply);
+        txtHorarioFinalManana[0] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_1);
+        txtHorarioFinalManana[1] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_2);
+        txtHorarioFinalManana[2] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_3);
+        txtHorarioFinalManana[3] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_4);
+        txtHorarioFinalManana[4] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_5);
+        txtHorarioFinalManana[5] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_6);
+        txtHorarioFinalManana[6] = (TextView) view.findViewById(R.id.txtHorarioFinalManana_7);
 
-        lyt_hours_1.setVisibility(View.GONE);
-        lyt_hours_2.setVisibility(View.GONE);
-        lyt_hours_3.setVisibility(View.GONE);
-        lyt_hours_4.setVisibility(View.GONE);
-        lyt_hours_5.setVisibility(View.GONE);
-        lyt_hours_6.setVisibility(View.GONE);
-        lyt_hours_7.setVisibility(View.GONE);
+        txtHorarioInicialTarde[0] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_1);
+        txtHorarioInicialTarde[1] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_2);
+        txtHorarioInicialTarde[2] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_3);
+        txtHorarioInicialTarde[3] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_4);
+        txtHorarioInicialTarde[4] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_5);
+        txtHorarioInicialTarde[5] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_6);
+        txtHorarioInicialTarde[6] = (TextView) view.findViewById(R.id.txtHorarioInicialTarde_7);
 
+        txtHorarioFinalTarde[0] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_1);
+        txtHorarioFinalTarde[1] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_2);
+        txtHorarioFinalTarde[2] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_3);
+        txtHorarioFinalTarde[3] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_4);
+        txtHorarioFinalTarde[4] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_5);
+        txtHorarioFinalTarde[5] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_6);
+        txtHorarioFinalTarde[6] = (TextView) view.findViewById(R.id.txtHorarioFinalTarde_7);
 
-        //agrego los eventos a los switch
-        addEventSwitch();
-        btn_apply.setOnClickListener(this);
+        ocultarLayer();
+        llenarDatos();
 
+        fab_horario.setOnClickListener(this);
     }
 
-    private void setVisibleLayout(final SwitchCompat swith_compat){
-        swith_compat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (swith_compat.getId()){
-                    case R.id.switch_open_1:
-                        if(switch_open_1.isChecked()){
-                            lyt_hours_1.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_1.setVisibility(View.GONE);
+    private void ocultarLayer(){
+        for (int i = 0; i < liner_dias.length; i++){
+            liner_dias[i].setVisibility(View.GONE);//oculto todas las vista
+        }
+    }
+
+    /**
+     * Proyecta una {@link Snackbar} con el string usado
+     * @param msg Mensaje
+     */
+    private void showSnackBar(String msg) {
+        Snackbar
+                .make(view.findViewById(R.id.coordinator_add_horario), msg, Snackbar.LENGTH_LONG)
+                .show();
+    }
+
+    public void llenarDatos(){
+        loading = ProgressDialog.show(getContext(),"Cargando.","Espere por favor...",false,false);
+        String newURL = Constantes.GET_HORARIO_FUNCIONARIO + "?codfuncionario=" + Preferences.getPreferenceString(getActivity(), Constantes.PREFERENCIA_IDENTIFICACION_CLAVE);
+        //petición GET
+        VolleySingleton.
+                getInstance(getContext()).
+                addToRequestQueue(
+                        new JsonObjectRequest(
+                                Request.Method.GET,
+                                newURL,
+                                null,
+                                new Response.Listener<JSONObject>() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+
+                                        // Procesar la respuesta Json
+                                        procesarRespuesta(response);
+                                        Log.i(TAG, "processanddo respuesta..." + response);
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        //descartar el diálogo de progreso
+                                        loading.dismiss();
+                                        showSnackBar("Error de red: " + error.getLocalizedMessage());
+                                        Log.d(TAG, "Error Volley: " + error.toString());
+
+                                    }
+                                }
+                        )
+                );
+    }
+
+    private void procesarRespuesta(JSONObject response){
+        try {
+            // Obtener atributo "estado"
+            String estado = response.getString("estado");
+            switch (estado){
+                case "1":// EXITO
+                    try {
+                        // Obtener array "consulta" Json
+                        JSONArray mensaje = response.getJSONArray("tblfuncionarios");
+                        // Parsear con Gson
+                        HorarioFuncionario[] horario = gson.fromJson(mensaje.toString(), HorarioFuncionario[].class);
+                        // Inicializar adaptador
+                        agregarHorario(Arrays.asList(horario));
+                        loading.dismiss();
+                        data_empty_horario.setText("");
+                        isHorario = true;
+
+                    } catch (JSONException e) {
+                        Log.i(TAG, "Error al llenar Adaptador " + e.getLocalizedMessage());
+                    }
+                    break;
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    data_empty_horario.setText(mensaje2);
+                    //data_empty.setText("");
+                    showSnackBar(mensaje2);
+                    loading.dismiss();
+                    break;
+            }
+        }catch (JSONException je){
+            Log.d(TAG, je.getMessage());
+        }
+    }
+
+    private void agregarHorario(List<HorarioFuncionario> h){
+        if(h.size() != 0) {
+            for (int m = 0; m < h.size(); m++) {
+                for (int j = 0; j < liner_dias.length; j++) {
+                    if (h.get(m).getCoddia().equalsIgnoreCase(String.valueOf(j + 1))) {
+                        liner_dias[j].setVisibility(View.VISIBLE);
+                        if (h.get(m).getCodjornada().equalsIgnoreCase("1")) {
+                            txtHorarioInicialManana[j].setText("DE " + h.get(m).getHoraentrada() + " AM");
+                            txtHorarioFinalManana[j].setText("HASTA " + h.get(m).getHorasalida() + " PM");
                         }
-                        break;
-                    case R.id.switch_open_2:
-                        if(switch_open_2.isChecked()){
-                            lyt_hours_2.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_2.setVisibility(View.GONE);
+
+                        if (h.get(m).getCodjornada().equalsIgnoreCase("2")) {
+                            txtHorarioInicialTarde[j].setText("DE " + h.get(m).getHoraentrada() + " PM");
+                            txtHorarioFinalTarde[j].setText("HASTA " + h.get(m).getHorasalida() + " PM");
                         }
-                        break;
-                    case R.id.switch_open_3:
-                        if(switch_open_3.isChecked()){
-                            lyt_hours_3.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_3.setVisibility(View.GONE);
-                        }
-                        break;
-                    case R.id.switch_open_4:
-                        if(switch_open_4.isChecked()){
-                            lyt_hours_4.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_4.setVisibility(View.GONE);
-                        }
-                        break;
-                    case R.id.switch_open_5:
-                        if(switch_open_5.isChecked()){
-                            lyt_hours_5.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_5.setVisibility(View.GONE);
-                        }
-                        break;
-                    case R.id.switch_open_6:
-                        if(switch_open_6.isChecked()){
-                            lyt_hours_6.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_6.setVisibility(View.GONE);
-                        }
-                        break;
-                    case R.id.switch_open_7:
-                        if(switch_open_7.isChecked()){
-                            lyt_hours_7.setVisibility(View.VISIBLE);
-                        }else{
-                            lyt_hours_7.setVisibility(View.GONE);
-                        }
-                        break;
+                    }
                 }
-            }
-        });
-    }
-
-    private void addEventSwitch(){
-        for (int i = 1; i<= 7; i++){
-            if(i == 1){
-                setVisibleLayout(switch_open_1);
-            }
-            if(i == 2){
-                setVisibleLayout(switch_open_2);
-            }
-            if(i == 3){
-                setVisibleLayout(switch_open_3);
-            }
-            if(i == 4){
-                setVisibleLayout(switch_open_4);
-            }
-            if(i == 5){
-                setVisibleLayout(switch_open_5);
-            }
-            if(i == 6){
-                setVisibleLayout(switch_open_6);
-            }
-            if(i == 7){
-                setVisibleLayout(switch_open_7);
             }
         }
     }
@@ -229,76 +246,14 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_apply:
-                validarDatosGUI();
+            case R.id.fab_horario:
+                if(isHorario){
+                    showSnackBar("Ya Registro Su Horario");
+                }else{
+                    Intent i = new Intent(getActivity(), AgregarHorarioActivity.class);
+                    startActivity(i);
+                }
                 break;
         }
     }
-
-
-
-    private void validarSwith(AppCompatSpinner s1, AppCompatSpinner s2){
-        if(s1.getSelectedItemPosition() == 0){
-            showSnackBar("Debe seleccionar una hora");
-            s1.performClick();
-        }else{
-            if(s2.getSelectedItemPosition() == 0){
-                showSnackBar("Debe seleccionar una hora");
-                s2.performClick();
-            }
-        }
-    }
-
-    private void validarDatosGUI(){
-        boolean estado = true;
-            if(!switch_open_1.isChecked() && !switch_open_1.isChecked()
-                    && !switch_open_3.isChecked()
-                    && !switch_open_4.isChecked()
-                    && !switch_open_5.isChecked()
-                    && !switch_open_6.isChecked()
-                    && !switch_open_7.isChecked()){
-                showSnackBar("Debe Seleccionar al menos un dia");
-            }
-
-            if(switch_open_1.isChecked()){
-                validarSwith(spin_bh_from_1, spin_bh_to_1);
-            }
-
-            if(switch_open_2.isChecked()){
-                validarSwith(spin_bh_from_2, spin_bh_to_2);
-            }
-
-            if(switch_open_3.isChecked()){
-                validarSwith(spin_bh_from_3, spin_bh_to_3);
-            }
-
-            if(switch_open_4.isChecked()){
-                validarSwith(spin_bh_from_4, spin_bh_to_4);
-            }
-
-            if(switch_open_5.isChecked()){
-                validarSwith(spin_bh_from_5, spin_bh_to_5);
-            }
-
-            if(switch_open_6.isChecked()){
-                validarSwith(spin_bh_from_6, spin_bh_to_6);
-            }
-
-            if(switch_open_7.isChecked()){
-                validarSwith(spin_bh_from_7, spin_bh_to_7);
-            }
-    }
-
-    /**
-     * Proyecta una {@link Snackbar} con el string usado
-     *
-     * @param msg Mensaje
-     */
-
-    private void showSnackBar(String msg) {
-        Snackbar
-                .make(view.findViewById(R.id.coordinator_horario), msg, Snackbar.LENGTH_LONG)
-                .show();
-    }
-
 }

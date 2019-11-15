@@ -10,11 +10,13 @@ public class Constantes {
     //code para las extra
     public static final int DEPENDENCIA = 100;
     public static final int CITA_DETALLE = 200;
+    public static final int CODIGO_CITA = 300;
 
     //extras
     public static final String EXTRA_CODIGO_DEPENDENCIA = "coddependencia";
     public static final String EXTRA_NOMBRE_DEPENDENCIA = "nombredependencia";
     public static final String EXTRA_CITA_DETALLE_ID = "codigo_cita";
+    public static final String EXTRA_CODIGO_CITA = "cita_id";
 
     //estado para la preferencia
     public static final boolean ESTADO_PREFERENCIA_TRUE = true;
@@ -54,5 +56,10 @@ public class Constantes {
     public static final String UPDATE_ESTADO_TEMA = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Tema/actualizar_estado_tema.php";
     public static final String GET_ALL_USUARIOS_FUNCIONARIOS = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Funcionario/obtener_all_usuarios.php";
     public static final String GET_ALL_CITAS_FUNCIONARIOS = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Cita/get_lista_cita_for_funcionario.php";
+    public static final String INSERTAR_HORARIO_FUNCIONARIO = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Funcionario/add_horarios.php";
+    public static final String INSERTAR_DETALLE_HORARIO_FUNCIONARIO = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Funcionario/add_detalle_horarios.php";
+    public static final String GET_HORARIO_FUNCIONARIO = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Funcionario/obtener_horarios.php";
+    public static final String GET_GESTION_CITA_ID = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Funcionario/obtener_gestion_citas.php";
+    public static final String UPDATE_ESTADO_GESTION_CITA = "http://" + IP + PUERTO_HOST + "/proyecto_citas_alcaldia/web/Funcionario/actualizar_estado_cita.php";
 
 }

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinador_gestion_citas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--tablayout y toolbar-->
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <!--Toolbar-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_gestion_cita"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+            <!--TabLayout-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/minilogo28"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtDiaActual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2019-09-17"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtHoraActual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:37 am"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtDiaSemana"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Martes"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp">
+
+                <TextView
+                    android:id="@+id/text_estado_cita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado Actual de la cita:"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtEstadoCita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/text_estado_cita"
+                    android:layout_marginLeft="20dp"
+                    android:text="En Espera"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"/>
+
+                <TextView
+                    android:id="@+id/text_gestion_cita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_estado_cita"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Gestionar La Cita"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textStyle="bold"/>
+
+                <RadioGroup
+                    android:id="@+id/rb_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_gestion_cita"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_en_espera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="En espera"
+                        android:checked="true"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginRight="15dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_no_atendida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Atendida"
+                        android:checked="false"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_marginRight="15dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_atendida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Atendida"
+                        android:checked="false"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:fontFamily="sans-serif-condensed-light" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/text_informacion_cita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Información de la cita"
+                    android:gravity="center"
+                    android:layout_below="@id/rb_group"
+                    android:layout_marginTop="25dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/text_usuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@id/text_informacion_cita"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="María José Ramos Ortega"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/text_informacion_cita"
+                    android:layout_toRightOf="@id/text_usuario"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <View
+                    android:id="@+id/vt_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DEE0E2"
+                    android:layout_below="@id/text_usuario"/>
+
+                <TextView
+                    android:id="@+id/text_tema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tema: "
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@id/vt_1"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtTema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buscar Papeles en del Adulto Mayor"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/vt_1"
+                    android:layout_toRightOf="@id/text_tema"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <View
+                    android:id="@+id/vt_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DEE0E2"
+                    android:layout_below="@id/text_tema"/>
+
+                <TextView
+                    android:id="@+id/text_fecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha: "
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@id/vt_2"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtFechaCitaGestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2019-11-15"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/vt_2"
+                    android:layout_toRightOf="@id/text_fecha"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <View
+                    android:id="@+id/vt_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DEE0E2"
+                    android:layout_below="@id/text_fecha"/>
+
+                <TextView
+                    android:id="@+id/text_hora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hora: "
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@id/vt_3"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtHoraCita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08:00.00 am - 08:30:00 am"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/vt_3"
+                    android:layout_toRightOf="@id/text_hora"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <View
+                    android:id="@+id/vt_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DEE0E2"
+                    android:layout_below="@id/text_hora"/>
+
+                <TextView
+                    android:id="@+id/text_duracion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duracion Cita: "
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/vt_4"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtDuracionTema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 min Aproximadamente"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/vt_4"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@id/text_hora"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

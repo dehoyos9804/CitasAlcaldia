@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -78,6 +80,8 @@ public class UsuariosFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_section_usuarios, container, false);
 
         init();//iniciar componentes
+
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -191,4 +195,12 @@ public class UsuariosFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_gestion_citas, menu);
+    }
+
+
 }

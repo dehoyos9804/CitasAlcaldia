@@ -56,7 +56,7 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
     //instancia global del administrador
     private RecyclerView.LayoutManager lManager;
     //instancia del progress dialog
-    private static ProgressDialog loading = null;
+    //private static ProgressDialog loading = null;
 
     private View view;
 
@@ -105,7 +105,9 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
         SimpleDateFormat fechaactual = new SimpleDateFormat("yyyy-MM-dd");
         String formatoFecha = fechaactual.format(localCalendar.getTime());
 
-        llenarDatos(formatoFecha);
+        fechaReal = formatoFecha;
+
+        //llenarDatos(formatoFecha);
 
         //eventos
         mi_calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -124,13 +126,14 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
                 }
 
                 String outDate = dateFormat.format(date);
+                fechaReal = outDate;
                 llenarDatos(outDate);
             }
         });
     }
 
     public void llenarDatos(String fecha){
-        loading = ProgressDialog.show(getContext(),"Cargando.","Espere por favor...",false,false);
+        final ProgressDialog loading = ProgressDialog.show(getContext(),"Cargando.","Espere por favor...",false,false);
         String newURL = Constantes.GET_ALL_CITAS_FUNCIONARIOS + "?codfuncionario=" + Preferences.getPreferenceString(getActivity(), Constantes.PREFERENCIA_IDENTIFICACION_CLAVE) + "&fecha=" + fecha;
         //petición GET
         VolleySingleton.
@@ -145,6 +148,7 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
                                     public void onResponse(JSONObject response) {
 
                                         // Procesar la respuesta Json
+                                        loading.dismiss();
                                         procesarRespuesta(response);
                                         Log.i(TAG, "processanddo respuesta..." + response);
                                     }
@@ -179,7 +183,7 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
                         // Setear adaptador a la lista
                         recyclerView.setAdapter(adapter);
                         data_empty.setText("");
-                        loading.dismiss();
+                        //loading.dismiss();
 
                     } catch (JSONException e) {
                         Log.i(TAG, "Error al llenar Adaptador " + e.getLocalizedMessage());
@@ -192,7 +196,7 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
                     adapter = new AdaptadorCitasFuncionario(null, getContext());;
                     recyclerView.setAdapter(adapter);
                     data_empty.setText("No hay citas programadas para esta fecha");
-                    loading.dismiss();
+                    //loading.dismiss();
                     break;
             }
         }catch (JSONException je){
@@ -213,6 +217,11 @@ public class CitasFragment  extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        llenarDatos(fechaReal);
     }
 }

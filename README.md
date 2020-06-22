@@ -27,7 +27,7 @@ A continuación muestro algunas vistas del proyecto final.
 ## Colaboradores ✒️
 
 * **Adalberto Pérez Muñoz** - *Trabajo Inicial* - [Adalberto](https://github.com/Adseg-perez)
-* **Carolaine Herrera Ayala** - *Documentación* 
+* **Carolaine Herrera Ayala** - *Documentación* - [Carolaine](https://github.com/CarolaineHerrera)
 * **Aldair De Hoyos Teran** - *Desarrollo* - [AldairDeHoyos](https://github.com/dehoyos9804)
 
 ## Licencia 📄

@@ -1,4 +1,4 @@
-# CITASALCALDIA
+# CitasAlcaldia
 
 _App Android que permite gestionar citas en alcaldías_
 

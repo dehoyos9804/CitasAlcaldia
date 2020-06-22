@@ -108,10 +108,16 @@ public class TemasFragment extends Fragment implements View.OnClickListener {
         lManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lManager);
 
-        llenarDatos();
+        //llenarDatos();
 
         //agrego los escuchadores
         fab.setOnClickListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        llenarDatos();
     }
 
     public void llenarDatos(){

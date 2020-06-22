@@ -111,10 +111,6 @@ public class InitialFuncionarioActivity extends AppCompatActivity {
                                 fragment = new TemasFragment();
                                 fragmentTrasition = true;
                                 break;
-                            case R.id.nav_perfil:
-                                //fragment = new AnalityFragment();
-                                //fragmentTrasition = true;
-                                break;
                             case R.id.nav_cerrar_sesion://cerramos la sesión del usuario actual
                                 cerrarSesion();
                                 break;

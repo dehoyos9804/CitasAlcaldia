@@ -39,19 +39,20 @@
         android:inputType="textPassword"/>
 
     <!--Button iniciar sesion-->
+
     <Button
         android:id="@+id/btnIniciarSesion"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
         android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:text="@string/text_boton_iniciarsesion" />
+        android:text="@string/text_boton_iniciarsesion"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/txtOlvidasteContraseña"

@@ -25,11 +25,11 @@
             android:icon="@drawable/ic_add_tema_light"
             android:title="@string/tema_item"/>
 
-        <item
+        <!--<item
             android:id="@+id/nav_perfil"
             android:checked="true"
             android:icon="@drawable/ic_person_light"
-            android:title="@string/perfil_item"/>
+            android:title="@string/perfil_item"/>-->
 
         <item
             android:id="@+id/nav_cerrar_sesion"

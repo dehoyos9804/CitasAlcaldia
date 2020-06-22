@@ -20,14 +20,14 @@ Tener Instalado Android Studio
 
 A continuación muestro algunas vistas del proyecto final.
 
-<img src="C:\Users\dehoyos\Documents\AndroidProjects\CitasAlcaldia\app\recursos\iniciar sesion.jpg" style="zoom:10%;" /> <img src="C:\Users\dehoyos\Documents\AndroidProjects\CitasAlcaldia\app\recursos\principal.jpg" style="zoom:10%;" />  <img src="C:\Users\dehoyos\Documents\AndroidProjects\CitasAlcaldia\app\recursos\registro.jpg" style="zoom:10%;" /> <img src="C:\Users\dehoyos\Documents\AndroidProjects\CitasAlcaldia\app\recursos\apartarcita.png" style="zoom:10%;" /> <img src="C:\Users\dehoyos\Documents\AndroidProjects\CitasAlcaldia\app\recursos\citas.png" style="zoom:10%;" /> <img src="C:\Users\dehoyos\Documents\AndroidProjects\CitasAlcaldia\app\recursos\horarios.png" style="zoom:10%;" /> 
+<img src="https://github.com/dehoyos9804/CitasAlcaldia/blob/master/app/recursos/iniciar%20sesion.jpg" style="zoom:10%;" /> <img src="https://github.com/dehoyos9804/CitasAlcaldia/blob/master/app/recursos/principal.jpg" style="zoom:10%;" />  <img src="https://github.com/dehoyos9804/CitasAlcaldia/blob/master/app/recursos/registro.jpg" style="zoom:10%;" /> <img src="https://github.com/dehoyos9804/CitasAlcaldia/blob/master/app/recursos/apartarcita.png" style="zoom:10%;" /> <img src="https://github.com/dehoyos9804/CitasAlcaldia/blob/master/app/recursos/citas.png" style="zoom:10%;" /> <img src="https://github.com/dehoyos9804/CitasAlcaldia/blob/master/app/recursos/horarios.png" style="zoom:10%;" /> 
 
 
 
 ## Colaboradores ✒️
 
-* **Adalberto Pérez Muñoz ** - *Trabajo Inicial* - [Adalberto](https://github.com/Adseg-perez)
-* **Carolaine Herrera Ayala** - *Documentación* - 
+* **Adalberto Pérez Muñoz** - *Trabajo Inicial* - [Adalberto](https://github.com/Adseg-perez)
+* **Carolaine Herrera Ayala** - *Documentación* 
 * **Aldair De Hoyos Teran** - *Desarrollo* - [AldairDeHoyos](https://github.com/dehoyos9804)
 
 ## Licencia 📄
